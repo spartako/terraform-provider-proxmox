@@ -267,6 +267,10 @@ func resourceVmQemu() *schema.Resource {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
+			"ssh_forward_port": {
+				Type:     schema.TypeString,
+				Optional: true,
+			},
 			"ssh_user": {
 				Type:     schema.TypeString,
 				Optional: true,
@@ -798,6 +802,9 @@ func initConnInfo(
 			// parse IP address out of ipconfig0
 			ipMatch := rxIPconfig.FindStringSubmatch(d.Get("ipconfig0").(string))
 			sshHost = ipMatch[1]
+		}
+		if d.Get("ssh_forward_port") != nil {
+			sshPort = d.Get("ssh_forward_port").(string)
 		}
 	} else {
 		log.Print("[DEBUG] setting up SSH forward")
