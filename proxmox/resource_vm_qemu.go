@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	pxapi "github.com/Telmate/proxmox-api-go/proxmox"
+	pxapi "github.com/spartako/proxmox-api-go/proxmox"
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
